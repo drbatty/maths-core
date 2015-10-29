@@ -10,6 +10,6 @@ A project containing basic mathematical classes including
 
 The library depends on my C# extensions library.
 
-To build, create a new solution in visual studio and import the C# extensions project and this project (and the unit tests if you want). Let me know if you have any problems building it.
+To build, create a new solution in visual studio and import the [C# extensions project](https://github.com/drbatty/c-sharp-extensions) and this project (and the unit tests if you want). Let me know if you have any problems building it.
 
 There is also a unit test project.
