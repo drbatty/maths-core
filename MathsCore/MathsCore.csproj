@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E882CBC7-4C17-4B0D-8142-AF1D7B637693}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MathsCore</RootNamespace>
+    <AssemblyName>MathsCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComplexNumber.cs" />
+    <Compile Include="Extensions\ContainerClasses\CollectionExtensions.cs" />
+    <Compile Include="Extensions\ContainerClasses\DictionaryMappingExtensions.cs" />
+    <Compile Include="Extensions\ContainerClasses\EnumerableSetExtensions.cs" />
+    <Compile Include="Graph\Exceptions\NonexistentVertexException.cs" />
+    <Compile Include="Interfaces\IMetric.cs" />
+    <Compile Include="Interfaces\IRecognisable.cs" />
+    <Compile Include="LinearAlgebra\Exceptions\UnrecognisedFieldException.cs" />
+    <Compile Include="LinearAlgebra\Field.cs" />
+    <Compile Include="LinearAlgebra\Interfaces\IVector.cs" />
+    <Compile Include="LinearAlgebra\Vector.cs" />
+    <Compile Include="LinearAlgebra\Vector2D.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sets\MetricSetExtensions.cs" />
+    <Compile Include="Sets\Set.cs" />
+    <Compile Include="Sets\SetEnumerableExtensions.cs" />
+    <Compile Include="Sets\StringSetExtensions.cs" />
+    <Compile Include="SimplicialComplex\Exceptions\ComplexesAreNotDisjointException.cs" />
+    <Compile Include="SimplicialComplex\SimpleGraphExtensions.cs" />
+    <Compile Include="SimplicialComplex\SimplicialComplex.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CSharpExtensions\CSharpExtensions\CSharpExtensions.csproj">
+      <Project>{0cb80f28-6c31-46d6-9f57-0c2d344ef24b}</Project>
+      <Name>CSharpExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
