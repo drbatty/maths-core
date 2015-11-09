@@ -45,5 +45,11 @@ namespace MathsCoreTests
         {
             new ComplexNumber(new Vector2D(1, 2)).ShouldEqual(new ComplexNumber(1, 2));
         }
+
+        [TestMethod]
+        public void ComplexNumberEqualsOperatorShouldBeValid()
+        {
+            (new ComplexNumber(1,0) == new ComplexNumber(1,0)).ShouldBeTrue();
+        }
     }
 }

@@ -1,3 +1,4 @@
+using CSharpExtensions;
 using CSharpExtensions.Text;
 using MathsCore.LinearAlgebra;
 
@@ -35,6 +36,51 @@ namespace MathsCore
             get { return Y; }
         }
 
+        #region equality operators
+
+        public override bool Equals(object other)
+        {
+            return !other.Isnt<ComplexNumber>() && Equals((ComplexNumber)other);
+        }
+
+        protected bool Equals(ComplexNumber other)
+        {
+            // ReSharper disable CompareOfFloatsByEqualityOperator
+            return Re == other.Re && Im == other.Im;
+            // ReSharper restore CompareOfFloatsByEqualityOperator
+        }
+
+        public override int GetHashCode()
+        {
+            return Re.GetHashCode() ^ Im.GetHashCode();
+        }
+        //
+        public static bool operator ==(ComplexNumber a, ComplexNumber b)
+        {
+            if (ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(ComplexNumber a, ComplexNumber b)
+        {
+            return !(a == b);
+        }
+
+        #endregion
+
+        #region arithmetic operations
+
         public static ComplexNumber operator +(ComplexNumber z1, ComplexNumber z2)
         {
             return new ComplexNumber(z1 + (Vector2D)z2);
@@ -50,6 +96,8 @@ namespace MathsCore
             return new ComplexNumber(X * w.X - Y * w.Y,
                 X * w.Y + Y * w.X);
         }
+
+        #endregion
 
         public override string ToString()
         {

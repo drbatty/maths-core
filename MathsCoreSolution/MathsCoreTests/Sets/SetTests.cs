@@ -363,5 +363,11 @@ namespace MathsCoreTests.Sets
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             (set1 != set3).ShouldBeTrue();
         }
+
+        [TestMethod]
+        public void TestEqualityOperator()
+        {
+            (new Set<int>{1} == new Set<int>{1}).ShouldBeTrue();
+        }
     }
 }
