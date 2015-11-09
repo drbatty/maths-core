@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSharpExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\CSharpExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComplexNumber.cs" />
-    <Compile Include="Extensions\ContainerClasses\CollectionExtensions.cs" />
     <Compile Include="Extensions\ContainerClasses\DictionaryMappingExtensions.cs" />
     <Compile Include="Extensions\ContainerClasses\EnumerableSetExtensions.cs" />
     <Compile Include="Graph\Exceptions\NonexistentVertexException.cs" />
@@ -60,12 +63,7 @@
     <Compile Include="SimplicialComplex\SimpleGraphExtensions.cs" />
     <Compile Include="SimplicialComplex\SimplicialComplex.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\CSharpExtensions\CSharpExtensions\CSharpExtensions.csproj">
-      <Project>{0cb80f28-6c31-46d6-9f57-0c2d344ef24b}</Project>
-      <Name>CSharpExtensions</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

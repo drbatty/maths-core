@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using MathsCore.Extensions.ContainerClasses;
+using CSharpExtensions.ContainerClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MathsCoreTests.Extensions.ContainerClasses

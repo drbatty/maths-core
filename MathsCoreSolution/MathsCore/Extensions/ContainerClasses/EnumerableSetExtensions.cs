@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MathsCore.Sets;
 
 namespace MathsCore.Extensions.ContainerClasses

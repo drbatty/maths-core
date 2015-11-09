@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSharpExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\CSharpExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpExtensionsTests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\CSharpExtensionsTests.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
   </ItemGroup>
@@ -62,14 +70,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CSharpExtensions\CSharpExtensionsTests\CSharpExtensionsTests.csproj">
-      <Project>{590c35c3-bb20-4053-b540-cfae55a88f67}</Project>
-      <Name>CSharpExtensionsTests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CSharpExtensions\CSharpExtensions\CSharpExtensions.csproj">
-      <Project>{0cb80f28-6c31-46d6-9f57-0c2d344ef24b}</Project>
-      <Name>CSharpExtensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MathsCore\MathsCore.csproj">
       <Project>{e882cbc7-4c17-4b0d-8142-af1d7b637693}</Project>
       <Name>MathsCore</Name>
