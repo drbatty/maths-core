@@ -8,8 +8,6 @@ A project containing basic mathematical classes including
 - Sparse Vectors
 - Complex Numbers
 
-The library depends on my C# extensions library.
-
-To build, create a new solution in visual studio and import the [C# extensions project](https://github.com/drbatty/c-sharp-extensions) and this project (and the unit tests if you want). Let me know if you have any problems building it.
+The library depends on my C# extensions library which is included as a dll
 
 There is also a unit test project.
