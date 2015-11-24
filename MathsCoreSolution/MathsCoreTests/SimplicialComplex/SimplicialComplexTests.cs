@@ -5,6 +5,7 @@ using CSharpExtensions.ContainerClasses;
 using CSharpExtensionsTests;
 using CSharpExtensionsTests.Base;
 using MathsCore.Graph.Exceptions;
+using MathsCore.LinearAlgebra;
 using MathsCore.Sets;
 using MathsCore.SimplicialComplex.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -94,7 +95,9 @@ namespace MathsCoreTests.SimplicialComplex
         public void Valency_of_non_existent_vertex_should_throw_NonexistentVertexException()
         {
             new SimplicialComplex<int>().Degree(1);
+            //ncrunch: no coverage start
         }
+        //ncrunch: no coverage end
 
         [TestMethod]
         public void Star_should_have_correct_vertices_and_edges()
@@ -111,9 +114,10 @@ namespace MathsCoreTests.SimplicialComplex
         [ExpectedException(typeof(NonexistentVertexException<int>))]
         public void Star_of_non_existent_vertex_should_throw_NonexistentVertexException()
         {
+            //ncrunch: no coverage start
             new SimplicialComplex<int>().Star(1);
         }
-
+        //ncrunch: no coverage end
         [TestMethod]
         public void Path_graph_should_have_correct_order_size_vertices_and_edges()
         {
@@ -310,7 +314,9 @@ namespace MathsCoreTests.SimplicialComplex
         public void Disjoint_union_should_throw_exception_if_vertex_sets_meet()
         {
             SimpleGraphExtensions.CompleteGraph(2).DisjointUnion(SimpleGraphExtensions.CompleteGraph(3));
+            //ncrunch: no coverage start
         }
+        //ncrunch: no coverage end
 
         [TestMethod]
         public void Disjoint_union_should_have_sums_of_numbers_of_simplices()
@@ -390,6 +396,114 @@ namespace MathsCoreTests.SimplicialComplex
             var graph = SimpleGraphExtensions.PathGraph(2).GraphCartesianProduct(SimpleGraphExtensions.PathGraph(3));
             graph.Order().ShouldEqual(6);
             graph.Size().ShouldEqual(7);
+        }
+
+        [TestMethod]
+        public void Petersen_Graph_should_have_expected_order_and_size()
+        {
+            var graph = SimpleGraphExtensions.PetersenGraph();
+            graph.Order().ShouldEqual(10);
+            graph.Size().ShouldEqual(15);
+        }
+
+        [TestMethod]
+        public void Grid_Graph_should_have_expected_order_and_size()
+        {
+            var graph = SimpleGraphExtensions.GridGraph(2, 3);
+            graph.Order().ShouldEqual(6);
+            graph.Size().ShouldEqual(7);
+        }
+
+        [TestMethod]
+        public void Ladder_Graph_should_have_expected_order_and_size()
+        {
+            var graph = SimpleGraphExtensions.LadderGraph(4);
+            graph.Order().ShouldEqual(8);
+            graph.Size().ShouldEqual(10);
+        }
+
+        [TestMethod]
+        public void Prism_Graph_should_have_expected_order_and_size()
+        {
+            var graph = SimpleGraphExtensions.PrismGraph(3, 2);
+            graph.Order().ShouldEqual(6);
+            graph.Size().ShouldEqual(9);
+        }
+
+        [TestMethod]
+        public void StackedBookGraph_should_have_expected_order_and_size()
+        {
+            var graph = SimpleGraphExtensions.StackedBookGraph(3, 3);
+            graph.Order().ShouldEqual(12);
+            graph.Size().ShouldEqual(17);
+        }
+
+        [TestMethod]
+        public void BookGraph_should_have_expected_order_and_size()
+        {
+            var graph = SimpleGraphExtensions.BookGraph(3);
+            graph.Order().ShouldEqual(8);
+            graph.Size().ShouldEqual(10);
+        }
+
+        [TestMethod]
+        public void Adjacency_matrix_should_be_symmetric()
+        {
+            SimpleGraphExtensions.CycleGraph(4).AdjacencyMatrix<int, string>().IsSymmetric().ShouldBeTrue();
+        }
+
+        [TestMethod]
+        public void Adjacency_matrix_should_have_correct_entries()
+        {
+            var matrix = SimpleGraphExtensions.CycleGraph(4).AdjacencyMatrix<int, string>();
+            matrix.GetEntry("v_1", "v_2").ShouldEqual(1);
+            matrix.GetEntry("v_2", "v_3").ShouldEqual(1);
+            matrix.GetEntry("v_3", "v_4").ShouldEqual(1);
+            matrix.GetEntry("v_4", "v_1").ShouldEqual(1);
+            matrix.GetEntry("v_1", "v_3").ShouldEqual(0);
+            matrix.GetEntry("v_2", "v_4").ShouldEqual(0);
+            matrix.GetEntry("v_1", "v_1").ShouldEqual(0);
+            matrix.GetEntry("v_2", "v_2").ShouldEqual(0);
+            matrix.GetEntry("v_3", "v_3").ShouldEqual(0);
+            matrix.GetEntry("v_4", "v_4").ShouldEqual(0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NonexistentVertexException<string>))]
+        public void TestDistanceSort_NonBasepoint()
+        {
+            var graph = SimpleGraphExtensions.CycleGraph(3);
+            graph.DistanceSort("v_4".WrapInList());
+            //ncrunch: no coverage start
+        }
+        //ncrunch: no coverage end
+
+        [TestMethod]
+        public void TestDistanceSort_Disconnected()
+        {
+            var graph = SimpleGraphExtensions.EdgelessGraph(3);
+            var sorted = graph.DistanceSort("v_1".WrapInList());
+            var enumerable = sorted as IList<string> ?? sorted.ToList();
+            enumerable.First().ShouldEqual("v_1");
+            enumerable.ShouldContain("v_2", "v_3");
+        }
+
+        [TestMethod]
+        public void TestGraphTensorProduct()
+        {
+            var graph1 = SimpleGraphExtensions.CycleGraph(3);
+            var graph2 = SimpleGraphExtensions.CycleGraph(4);
+            graph1.GraphTensorProduct(graph2).Order().ShouldEqual(12);
+            graph1.GraphTensorProduct(graph2).Size().ShouldEqual(48);
+        }
+
+        [TestMethod]
+        public void TestBipartiteDoubleCover()
+        {
+            var graph = SimpleGraphExtensions.CycleGraph(4);
+            var cover = graph.BipartiteDoubleCover();
+            cover.Order().ShouldEqual(8);
+            cover.Size().ShouldEqual(20);
         }
     }
 }

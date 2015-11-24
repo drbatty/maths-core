@@ -49,7 +49,44 @@ namespace MathsCoreTests
         [TestMethod]
         public void ComplexNumberEqualsOperatorShouldBeValid()
         {
+            // ReSharper disable EqualExpressionComparison
             (new ComplexNumber(1,0) == new ComplexNumber(1,0)).ShouldBeTrue();
+            // ReSharper restore EqualExpressionComparison
+        }
+
+        [TestMethod]
+        public void ComplexNumberHashcodeShouldBeAsExpected()
+        {
+            var z = new ComplexNumber(1, 2);
+            z.GetHashCode().ShouldEqual(z.Re.GetHashCode() ^ z.Im.GetHashCode());
+        }
+
+        [TestMethod]
+        public void TestReferenceEquals()
+        {
+            var z = new ComplexNumber(1, 2);
+            // ReSharper disable EqualExpressionComparison
+            (z == z).ShouldBeTrue();
+            // ReSharper restore EqualExpressionComparison
+        }
+
+        [TestMethod]
+        public void TestNotEquals()
+        {
+            var z = new ComplexNumber(1, 2);
+            var w = new ComplexNumber(1, 2);
+            var x = new ComplexNumber(3, 2);
+            (z != x).ShouldBeTrue();
+            (z != w).ShouldBeFalse();
+        }
+
+        [TestMethod]
+        public void TestEqualityNull()
+        {
+            var z = new ComplexNumber(1, 2);
+            // ReSharper disable ConditionIsAlwaysTrueOrFalse
+            (z == null).ShouldBeFalse();
+            // ReSharper restore ConditionIsAlwaysTrueOrFalse
         }
     }
 }

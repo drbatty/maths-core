@@ -77,7 +77,7 @@ namespace MathsCore.SimplicialComplex
             return PathGraph(n).GraphCartesianProduct(PathGraph(m));
         }
 
-        public static SimplicialComplex<Tuple<string, string>> LadderGraph(int n, int m)
+        public static SimplicialComplex<Tuple<string, string>> LadderGraph(int n)
         {
             return GridGraph(n, 2);
         }
@@ -137,10 +137,10 @@ namespace MathsCore.SimplicialComplex
 
         #region algebraic
 
-        public static IDictionary<Tuple<TVertexType, TVertexType>, TField> AdjacencyMatrix<TField, TVertexType>(
+        public static Vector<Tuple<TVertexType, TVertexType>, TField> AdjacencyMatrix<TField, TVertexType>(
             this SimplicialComplex<TVertexType> complex)
         {
-            var result = new Dictionary<Tuple<TVertexType, TVertexType>, TField>();
+            var result = new Vector<Tuple<TVertexType, TVertexType>, TField>();
 
             complex.Vertices()
                 .EachPair((v, w) => result[new Tuple<TVertexType, TVertexType>(v, w)] = Field.Zero(typeof(TField)));

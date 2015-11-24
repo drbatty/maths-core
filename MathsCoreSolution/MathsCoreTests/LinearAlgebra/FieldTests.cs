@@ -29,13 +29,17 @@ namespace MathsCoreTests.LinearAlgebra
         public void UnrecognizedFieldExceptionShouldOccurForUnitOfUnknownFieldTypes()
         {
             Field.Unit(typeof (string));
+            //ncrunch: no coverage start
         }
+        //ncrunch: no coverage end
 
         [TestMethod]
         [ExpectedException(typeof(UnrecognisedFieldException))]
         public void UnrecognizedFieldExceptionShouldOccurForZeroOfUnknownFieldTypes()
         {
             Field.Zero(typeof(string));
+            //ncrunch: no coverage start
         }
+        //ncrunch: no coverage end
     }
 }

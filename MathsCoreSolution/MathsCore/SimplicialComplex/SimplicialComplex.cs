@@ -111,7 +111,9 @@ namespace MathsCore.SimplicialComplex
                 return "Complete graph of order " + this.Order();
             if (Dimension == 0)
                 return "Totally disconnected graph on " + this.Order() + (this.Order() == 1 ? " vertex" : " vertices");
+            //ncrunch: no coverage start
             return string.Empty;
+            //ncrunch: no coverage end
         }
 
         public override string ToString()

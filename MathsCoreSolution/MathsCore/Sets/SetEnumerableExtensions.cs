@@ -26,12 +26,13 @@ namespace MathsCore.Sets
         /// <summary>
         /// forms the intersection of a collection of sets
         /// </summary>
-        /// <typeparam name="T">the type of object contained in the sets</typeparam>`
+        /// <typeparam name="T">the type of object contained in the sets</typeparam>
         /// <param name="sets">the collection of sets whose intersection to form</param>
         /// <returns>the intersection of the given collection of sets</returns>
         public static Set<T> Intersection<T>(this IEnumerable<Set<T>> sets)
         {
-            return sets.Inject(Set<T>.Empty, (p, q) => p & q);
+            var enumerable = sets as IList<Set<T>> ?? sets.ToList();
+            return enumerable.None() ? Set<T>.Empty : enumerable.Inject(enumerable.First(), (p, q) => p & q);
         }
 
         public static Set<Set<TVertexType>> Skeleton<TVertexType>(this IEnumerable<Set<TVertexType>> complex,

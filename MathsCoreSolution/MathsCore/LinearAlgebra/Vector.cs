@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CSharpExtensions;
@@ -8,20 +9,25 @@ using MathsCore.LinearAlgebra.Interfaces;
 
 namespace MathsCore.LinearAlgebra
 {
-    public class Vector<TBasis, TField> : Dictionary<TBasis, TField>, IVector<TBasis, TField>
+    public class Vector<TBasis, TField> : IVector<TBasis, TField>
     {
+        private readonly Dictionary<TBasis, TField> _dictionary;
+
         public Vector(IDictionary<TBasis, TField> dictionary)
+            : this()
         {
-            dictionary.EachKey(key => this[key] = dictionary[key]);
+            dictionary.WhereValues(v => v != Field.Zero(typeof(TField))).EachKey(key => _dictionary[key] = dictionary[key]);
         }
 
         public Vector()
         {
-
+            _dictionary = new Dictionary<TBasis, TField>();
         }
 
         public Vector(TBasis singleton)
+            : this()
         {
+            _dictionary = new Dictionary<TBasis, TField>();
             this[singleton] = 1;
         }
 
@@ -56,19 +62,114 @@ namespace MathsCore.LinearAlgebra
 
         #endregion
 
+        #region IDictionary<TBasis, TField> members
+
+        public bool ContainsKey(TBasis key)
+        {
+            return _dictionary.ContainsKey(key);
+        }
+
+        public void Add(TBasis key, TField value)
+        {
+            if (value != Field.Zero(typeof(TField)))
+            {
+                _dictionary[key] = value;
+                return;
+            }
+            Remove(key);
+        }
+
+        public bool Remove(TBasis key)
+        {
+            return _dictionary.Remove(key);
+        }
+
+        //ncrunch: no coverage start
+        public bool TryGetValue(TBasis key, out TField value)
+        {
+            throw new NotImplementedException();
+        }
+        //ncrunch: no coverage end
+
+        TField IDictionary<TBasis, TField>.this[TBasis key]
+        {
+            get
+            {
+                return ContainsKey(key) ? _dictionary[key] : Field.Zero(typeof(TField));
+            }
+            set { _dictionary[key] = value; }
+        }
+
+        public ICollection<TBasis> Keys
+        {
+            get { return _dictionary.Keys; }
+        }
+
+        public ICollection<TField> Values
+        {
+            get { return _dictionary.Values; }
+        }
+
+        public IEnumerator<KeyValuePair<TBasis, TField>> GetEnumerator()
+        {
+            return _dictionary.GetEnumerator();
+        }
+
+        public void Add(KeyValuePair<TBasis, TField> item)
+        {
+            if (item.Value != Field.Zero(typeof(TField)))
+                _dictionary.Add(item.Key, item.Value);
+        }
+
+        public void Clear()
+        {
+            _dictionary.Clear();
+        }
+
+        public bool Contains(KeyValuePair<TBasis, TField> item)
+        {
+            return _dictionary.Contains(item);
+        }
+
+        //ncrunch: no coverage start
+        public void CopyTo(KeyValuePair<TBasis, TField>[] array, int arrayIndex)
+        {
+            //_dictionary.CopyTo(array, arrayIndex);
+        }
+        //ncrunch: no coverage end
+
+        public bool Remove(KeyValuePair<TBasis, TField> item)
+        {
+            return _dictionary.Remove(item.Key);
+        }
+
+        public int Count
+        {
+            get { return _dictionary.Count; }
+        }
+
+        public bool IsReadOnly { get; private set; }
+
+        #endregion
+
         #region indexer
 
-        new public dynamic this[TBasis index]
+        public dynamic this[TBasis index]
         {
             set
             {
                 var dValue = value;
                 if (dValue != Field.Zero(dValue.GetType()))
-                    base[index] = value;
+                    _dictionary[index] = dValue;
             }
             get
             {
-                return ContainsKey(index) ? base[index] : default(TField);
+                if (_dictionary.ContainsKey(index))
+                {
+                    var returnvalue = _dictionary[index];
+                    return returnvalue;
+                }
+                return Field.Zero(typeof(TField));
             }
         }
 
@@ -91,6 +192,13 @@ namespace MathsCore.LinearAlgebra
         {
             return Keys.Select(key => this[key]).Aggregate(0, (current, dValue) => (int)(current + dValue));
         }
+
+        //ncrunch: no coverage start
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        //ncrunch: no coverage end
 
         #endregion
 
@@ -151,6 +259,8 @@ namespace MathsCore.LinearAlgebra
 
         #region util
 
+
+
         public override string ToString()
         {
             return IsZero() ? "ZERO" : Keys.OrderBy(k => -this[k]).Inject(String.Empty,
@@ -167,6 +277,5 @@ namespace MathsCore.LinearAlgebra
         }
 
         #endregion
-
     }
 }
