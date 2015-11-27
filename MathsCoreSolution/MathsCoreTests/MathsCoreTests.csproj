@@ -62,8 +62,13 @@
     <Compile Include="ComplexNumberTests.cs" />
     <Compile Include="Extensions\ContainerClasses\CollectionExtensionTests.cs" />
     <Compile Include="Extensions\ContainerClasses\DictionaryMappingExtensionsTests.cs" />
+    <Compile Include="Extensions\ContainerClasses\EnumerableMathsExtensionsTests.cs" />
     <Compile Include="Extensions\ContainerClasses\EnumerableSetExtensionsTests.cs" />
     <Compile Include="Extensions\NumberTheoreticIntExtensionsTests.cs" />
+    <Compile Include="Graph\DirectedLabelled\DirectedLabelledGraphTests.cs" />
+    <Compile Include="Graph\Directed\DirectedEdgeTests.cs" />
+    <Compile Include="Graph\Directed\DirectedGraphTests.cs" />
+    <Compile Include="LinearAlgebra\EnumerableVectorExtensionsTests.cs" />
     <Compile Include="LinearAlgebra\Exceptions\UnrecognisedFieldExceptionTests.cs" />
     <Compile Include="LinearAlgebra\FieldTests.cs" />
     <Compile Include="LinearAlgebra\MatrixExtensionsTests.cs" />

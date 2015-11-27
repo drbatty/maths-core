@@ -45,11 +45,21 @@
   <ItemGroup>
     <Compile Include="ComplexNumber.cs" />
     <Compile Include="Extensions\ContainerClasses\DictionaryMappingExtensions.cs" />
+    <Compile Include="Extensions\ContainerClasses\EnumerableMathsExtensions.cs" />
     <Compile Include="Extensions\ContainerClasses\EnumerableSetExtensions.cs" />
     <Compile Include="Extensions\NumberTheoreticIntExtensions.cs" />
+    <Compile Include="Graph\DirectedLabelled\DirectedLabelledEdge.cs" />
+    <Compile Include="Graph\DirectedLabelled\DirectedLabelledGraph.cs" />
+    <Compile Include="Graph\DirectedLabelled\Interfaces\IDirectedLabelledEdge.cs" />
+    <Compile Include="Graph\DirectedLabelled\Interfaces\IDirectedLabelledGraph.cs" />
+    <Compile Include="Graph\Directed\DirectedEdge.cs" />
+    <Compile Include="Graph\Directed\DirectedGraph.cs" />
+    <Compile Include="Graph\Directed\Interfaces\IDirectedEdge.cs" />
+    <Compile Include="Graph\Directed\Interfaces\IDirectedGraph.cs" />
     <Compile Include="Graph\Exceptions\NonexistentVertexException.cs" />
     <Compile Include="Interfaces\IMetric.cs" />
     <Compile Include="Interfaces\IRecognisable.cs" />
+    <Compile Include="LinearAlgebra\EnumerableVectorExtensions.cs" />
     <Compile Include="LinearAlgebra\Exceptions\UnrecognisedFieldException.cs" />
     <Compile Include="LinearAlgebra\Field.cs" />
     <Compile Include="LinearAlgebra\Interfaces\IVector.cs" />

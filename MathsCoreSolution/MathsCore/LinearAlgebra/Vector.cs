@@ -128,7 +128,7 @@ namespace MathsCore.LinearAlgebra
 
         public bool Contains(KeyValuePair<TBasis, TField> item)
         {
-            return _dictionary.Contains(item);
+            return _dictionary.Contains(item.WrapInList());
         }
 
         //ncrunch: no coverage start

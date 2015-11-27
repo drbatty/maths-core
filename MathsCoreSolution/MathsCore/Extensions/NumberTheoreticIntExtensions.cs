@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CSharpExtensions;
 using CSharpExtensions.ContainerClasses;
+using MathsCore.Extensions.ContainerClasses;
 
 namespace MathsCore.Extensions
 {
