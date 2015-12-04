@@ -124,9 +124,7 @@ namespace MathsCore.Graph.Directed
                 Vertices.Each(v =>
                 {
                     if (Edges.Contains(new DirectedEdge<TVertexType>(v, vertex1)) & !result.Contains(vertex1))
-                    {
                         result.Add(v);
-                    }
                 });
             }
             return result;

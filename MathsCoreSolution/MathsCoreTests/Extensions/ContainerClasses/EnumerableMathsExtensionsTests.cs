@@ -41,14 +41,14 @@ namespace MathsCoreTests.Extensions.ContainerClasses
         [TestMethod]
         public void MaximizerTestNull()
         {
-            Assert.IsNull(1.Upto(10).Maximizer(null));
+            1.Upto(10).Maximizer(null).ShouldBeNull();
         }
 
         [TestMethod]
         public void MaximizerTestEmpty()
         {
             Func<int, double> doubleVal = n => n;
-            Assert.IsNull(new List<int>().Maximizer(doubleVal));
+            new List<int>().Maximizer(doubleVal).ShouldBeNull();
         }
 
         #endregion
@@ -101,19 +101,19 @@ namespace MathsCoreTests.Extensions.ContainerClasses
         [TestMethod]
         public void MinimizersTestEmpty1()
         {
-            Assert.IsNull(new List<int>().Minimizers(1.Upto(10), (d1, d2) => d1 * d2));
+            new List<int>().Minimizers(1.Upto(10), (d1, d2) => d1 * d2).ShouldBeNull();
         }
 
         [TestMethod]
         public void MinimizersTestEmpty2()
         {
-            Assert.IsNull(1.Upto(10).Minimizers(new List<int>(), (d1, d2) => d1 * d2));
+            1.Upto(10).Minimizers(new List<int>(), (d1, d2) => d1 * d2).ShouldBeNull();
         }
 
         [TestMethod]
         public void MinimizersTestLambdaNull()
         {
-            Assert.IsNull(1.Upto(10).Minimizers(1.Upto(10), null));
+            1.Upto(10).Minimizers(1.Upto(10), null).ShouldBeNull();
         }
 
         #endregion

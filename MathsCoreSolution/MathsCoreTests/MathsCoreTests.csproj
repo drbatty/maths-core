@@ -65,6 +65,8 @@
     <Compile Include="Extensions\ContainerClasses\EnumerableMathsExtensionsTests.cs" />
     <Compile Include="Extensions\ContainerClasses\EnumerableSetExtensionsTests.cs" />
     <Compile Include="Extensions\NumberTheoreticIntExtensionsTests.cs" />
+    <Compile Include="FormalLanguages\Automata\FiniteStateAutomatonTests.cs" />
+    <Compile Include="FormalLanguages\Grammars\GrammarTests.cs" />
     <Compile Include="Graph\DirectedLabelled\DirectedLabelledGraphTests.cs" />
     <Compile Include="Graph\Directed\DirectedEdgeTests.cs" />
     <Compile Include="Graph\Directed\DirectedGraphTests.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="LinearAlgebra\FieldTests.cs" />
     <Compile Include="LinearAlgebra\MatrixExtensionsTests.cs" />
     <Compile Include="LinearAlgebra\VectorTests.cs" />
+    <Compile Include="MachineLearning\PerceptronTests.cs" />
     <Compile Include="MathsCoreTestUtil.cs" />
     <Compile Include="PermutationTests.cs" />
     <Compile Include="PolynomialTests.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Sets\SetTests.cs" />
     <Compile Include="SimplicialComplex\SimplicialComplexTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistics\StatisticsExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MathsCore\MathsCore.csproj">
@@ -92,6 +96,7 @@
       <Name>MathsCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

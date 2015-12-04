@@ -44,10 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComplexNumber.cs" />
+    <Compile Include="DesignPattern\Structural\Composite\CompositeSet.cs" />
+    <Compile Include="Exceptions\InvalidTransitionException.cs" />
     <Compile Include="Extensions\ContainerClasses\DictionaryMappingExtensions.cs" />
     <Compile Include="Extensions\ContainerClasses\EnumerableMathsExtensions.cs" />
     <Compile Include="Extensions\ContainerClasses\EnumerableSetExtensions.cs" />
     <Compile Include="Extensions\NumberTheoreticIntExtensions.cs" />
+    <Compile Include="Extensions\RandomExtensions.cs" />
+    <Compile Include="FormalLanguages\Automata\FiniteStateAutomaton.cs" />
+    <Compile Include="FormalLanguages\Grammars\Grammar.cs" />
+    <Compile Include="FormalLanguages\Grammars\Production.cs" />
     <Compile Include="Graph\DirectedLabelled\DirectedLabelledEdge.cs" />
     <Compile Include="Graph\DirectedLabelled\DirectedLabelledGraph.cs" />
     <Compile Include="Graph\DirectedLabelled\Interfaces\IDirectedLabelledEdge.cs" />
@@ -57,13 +63,24 @@
     <Compile Include="Graph\Directed\Interfaces\IDirectedEdge.cs" />
     <Compile Include="Graph\Directed\Interfaces\IDirectedGraph.cs" />
     <Compile Include="Graph\Exceptions\NonexistentVertexException.cs" />
+    <Compile Include="Graph\FlowNetwork\FlowNetwork.cs" />
     <Compile Include="Interfaces\IMetric.cs" />
     <Compile Include="Interfaces\IRecognisable.cs" />
+    <Compile Include="Interfaces\IStateful.cs" />
+    <Compile Include="LinearAlgebra\Attributes\VectorComponentAttribute.cs" />
+    <Compile Include="LinearAlgebra\DataMining\Clustering\CentroidCluster.cs" />
+    <Compile Include="LinearAlgebra\DataMining\Clustering\CentroidClusterSet.cs" />
+    <Compile Include="LinearAlgebra\DataMining\Clustering\ClusterSet.cs" />
     <Compile Include="LinearAlgebra\EnumerableVectorExtensions.cs" />
     <Compile Include="LinearAlgebra\Exceptions\UnrecognisedFieldException.cs" />
     <Compile Include="LinearAlgebra\Field.cs" />
     <Compile Include="LinearAlgebra\Interfaces\IVector.cs" />
+    <Compile Include="LinearAlgebra\IntVectorExtensions.cs" />
     <Compile Include="LinearAlgebra\MatrixExtensions.cs" />
+    <Compile Include="LinearAlgebra\Quantum\StateSpace.cs" />
+    <Compile Include="LinearAlgebra\VectorisableObjectExtensions.cs" />
+    <Compile Include="MachineLearning\SingleLayerPerceptron.cs" />
+    <Compile Include="NumberCrunching\QuakeReciprocalSquareRoot.cs" />
     <Compile Include="Permutation.cs" />
     <Compile Include="LinearAlgebra\Vector.cs" />
     <Compile Include="LinearAlgebra\Vector2D.cs" />
@@ -71,12 +88,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sets\BinaryRelationExtensions.cs" />
     <Compile Include="Sets\MetricSetExtensions.cs" />
+    <Compile Include="Sets\Poset.cs" />
     <Compile Include="Sets\Set.cs" />
     <Compile Include="Sets\SetEnumerableExtensions.cs" />
     <Compile Include="Sets\StringSetExtensions.cs" />
     <Compile Include="SimplicialComplex\Exceptions\ComplexesAreNotDisjointException.cs" />
     <Compile Include="SimplicialComplex\SimpleGraphExtensions.cs" />
     <Compile Include="SimplicialComplex\SimplicialComplex.cs" />
+    <Compile Include="Statistics\StatisticsExtensions.cs" />
+    <Compile Include="SymbolicManipulation\AlgebraicExtensions.cs" />
+    <Compile Include="SymbolicManipulation\DifferentiationVisitor.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

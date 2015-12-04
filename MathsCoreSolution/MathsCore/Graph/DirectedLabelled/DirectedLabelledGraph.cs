@@ -113,7 +113,10 @@ namespace MathsCore.Graph.DirectedLabelled
 
         public IDirectedGraph<TVertexType> RestrictToFinalVertex(TVertexType t)
         {
-            throw new System.NotImplementedException();
+            var edges = Edges.Where(e => ((DirectedLabelledEdge<TVertexType, TLabelType>)e).TerminalVertex.Equals(t));
+            var edgeSet = new Set<IDirectedEdge<TVertexType>>();
+            edgeSet.AddRange(edges);
+            return new DirectedGraph<TVertexType>(t.WrapInList().ToSet(), edgeSet);
         }
     }
 }
